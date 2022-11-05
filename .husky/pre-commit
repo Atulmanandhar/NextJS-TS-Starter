@@ -8,6 +8,13 @@ BLUE='\033[1;36m'
 BOLD='\033[1;37m'
 NC='\033[0m'
 
+# Check Formating files
+npm run format ||
+(
+    echo "\n ❌🟨 Formatting Files failed${RED}Failed${NC}. 🟨❌\n";
+    false;
+)
+
 echo "\n 🚧🏗️  ${BOLD}Checking format, lint and types in your project before committing${NC}"
 
 # Check Prettier standards
@@ -34,11 +41,11 @@ npm run check-types ||
 # If everything passes... Now we can build
 echo "🔥🚀 ${BOLD}All passed... Now we can build.${NC} 🚀🔥"
 
-npm run build ||
-(
-    echo "\n ❌🟩 Next build ${RED}Failed${NC}. 🟩❌\n View the errors above to see why.\n"
-    false;
-)
+# npm run build ||
+# (
+#     echo "\n ❌🟩 Next build ${RED}Failed${NC}. 🟩❌\n View the errors above to see why.\n"
+#     false;
+# )
 
 # If everything passes... Now we can commit
-echo "✅✅ ${GREEN}Build is completed... I am committing this now.${NC} ✅✅\n"
+# echo "✅✅ ${GREEN}Build is completed... I am committing this now.${NC} ✅✅\n"
